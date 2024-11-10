@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KgYXzvqZ++k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\WhatsForDinner\\WhatsForDinner.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\33780\\.nuget\\packages\\bootstrap\\5.3.3\\bootstrap.5.3.3.nupkg.sha512"
+  ],
+  "logs": []
+}

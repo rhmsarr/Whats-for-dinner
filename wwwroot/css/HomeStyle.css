@@ -1,0 +1,42 @@
+body{
+    background-image: url("/images/spoons1.jpg") !important;
+    background-size: cover;
+    backdrop-filter: blur(3px);
+}
+
+.intro{
+    height: 20vw;
+    position: relative;
+}
+h1{
+    padding-top: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+}
+.generate{
+    margin-top: 100px;
+    height: 20vw;
+    position: relative;
+}
+.generate button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0,0,0,0.7) !important;
+    width: 50vw;
+    height: 10vh;
+}
+.generate button:hover{
+    border: 1px solid rgba(0, 0, 0,0.7) !important;
+    color: white !important;
+    background-color: rgba(0,0,0,0.9) !important;
+    
+}
+
+/*rgb(4, 46, 46)*/

@@ -1,0 +1,39 @@
+@using WhatsForDinner.Models
+@using Microsoft.JSInterop
+@model List<Ingredient>
+@inject IJSRuntime JSRuntime
+<link rel="stylesheet" href="/css/IngredientStyle.css">
+
+@{var ingredientGroups = Model.GroupBy(ing => ing.category);}
+
+<form id="IngredientsList" >
+    @foreach(var group in ingredientGroups){
+        <div class ="card" id="@group.Key">
+            <h3 class="card-header">@group.Key</h3>
+            <div class="card-body">
+                @foreach(Ingredient ing in group){
+                    
+                    <label asp-for="@ing.name" ><input asp-for="@ing.name" class="form-check-input" type="checkbox" >@ing.name</label>
+                }
+            </div>
+            <div id="bottom">
+                <button class="btn">Add an item</button>
+                <button type="submit" class="btn">Save</button>
+            </div>
+                
+
+        </div>
+        
+    }
+
+
+</form>
+
+@**{
+    
+    async void  AddIngredients(string name, string category){
+        await JSRuntime.InvokeVoidAsync("AddIngredients", name, category); 
+    }
+}**@
+
+

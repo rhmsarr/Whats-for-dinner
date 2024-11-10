@@ -1,0 +1,27 @@
+
+.recipe{
+    color: rgb(4, 46, 46) !important;
+}
+
+#prep-time, #cook-time, #servings{
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+}
+.card-body button{
+    float: inline-end;
+    margin-left: 10px;
+    background-color: rgb(4, 46, 46) !important;
+    color: white;
+
+}
+
+.card-body button:hover{
+    border: 1px solid rgb(4, 46, 46) !important;
+    color: rgb(4, 46, 46) !important;
+    background-color: white !important;
+    
+}
+.recipe{
+    margin-top: 20px;
+}
