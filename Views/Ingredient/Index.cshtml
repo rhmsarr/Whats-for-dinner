@@ -4,6 +4,9 @@
 @inject IJSRuntime JSRuntime
 <link rel="stylesheet" href="/css/IngredientStyle.css">
 
+@{ViewData["Title"] = "My Pantry";}
+
+
 @{var ingredientGroups = Model.GroupBy(ing => ing.category);}
 
 <form id="IngredientsList" >
@@ -13,7 +16,7 @@
             <div class="card-body">
                 @foreach(Ingredient ing in group){
                     
-                    <label asp-for="@ing.name" ><input asp-for="@ing.name" class="form-check-input" type="checkbox" >@ing.name</label>
+                    <label  ><input class="form-check-input" type="checkbox" >@ing.name</label>
                 }
             </div>
             <div id="bottom">

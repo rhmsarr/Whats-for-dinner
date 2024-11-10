@@ -26,3 +26,4 @@ C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\obj\Debug\ne
 C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\obj\Debug\net8.0\WhatsForDinner.genruntimeconfig.cache
 C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\obj\Debug\net8.0\ref\WhatsForDinner.dll
 C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\bin\Debug\net8.0\WhatsForDinner.staticwebassets.runtime.json
+C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\obj\Debug\net8.0\WhatsForDinner.sourcelink.json

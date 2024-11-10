@@ -5,7 +5,7 @@ namespace WhatsForDinner.Controllers{
     public class IngredientController : Controller{
 
         [Route("MyAccount/MyPantry")]
-        public IActionResult Ingredients(){
+        public IActionResult Index(){
             return View(IngredientService.ingredients);
         }
     }
