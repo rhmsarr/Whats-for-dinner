@@ -8,5 +8,11 @@ namespace WhatsForDinner.Controllers{
         public IActionResult Index(){
             return View(IngredientService.ingredients);
         }
+
+        public IActionResult Category(string category){
+
+            return View(IngredientService.GetByCategory(category));
+        }
+
     }
 }
