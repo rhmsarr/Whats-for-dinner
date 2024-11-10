@@ -1,7 +1,4 @@
-@using WhatsForDinner.Models
-@using Microsoft.JSInterop
 @model List<Ingredient>
-@inject IJSRuntime JSRuntime
 <link rel="stylesheet" href="/css/IngredientStyle.css">
 
 @{ViewData["Title"] = "My Pantry";}
@@ -11,9 +8,37 @@
 
 <form id="IngredientsList" >
     @foreach(var group in ingredientGroups){
-        <div class ="card" id="@group.Key">
+        var modalId = group.Key.Replace(" ", "-");
+        <div class ="card"   data-bs-toggle="modal" data-bs-target="#@modalId">
             <h3 class="card-header">@group.Key</h3>
-            <div class="card-body">
+
+        </div>
+    
+        <div class="modal fade" id="@modalId" tabindex="-1" aria-labelledby="@modalId"aria-hidden="true">
+            <div class="modal-dialog" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>@group.Key</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        @foreach(Ingredient ing in group){
+                    
+                            <label><input class="form-check-input" type="checkbox" >@ing.Name</label>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn">Add an item</button>
+                        <button type="submit" class="btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            @*<div class="card-body">
                 @foreach(Ingredient ing in group){
                     
                     <label  ><input class="form-check-input" type="checkbox" >@ing.Name</label>
@@ -22,12 +47,15 @@
             <div id="bottom">
                 <button class="btn">Add an item</button>
                 <button type="submit" class="btn">Save</button>
-            </div>
+            </div>*@
                 
-
-        </div>
-        
     }
+        
+        
+        
+    
+
+    
 
 
 </form>
@@ -38,5 +66,7 @@
         await JSRuntime.InvokeVoidAsync("AddIngredients", name, category); 
     }
 }**@
+
+
 
 
