@@ -7,7 +7,7 @@
 @{ViewData["Title"] = "My Pantry";}
 
 
-@{var ingredientGroups = Model.GroupBy(ing => ing.category);}
+@{var ingredientGroups = Model.GroupBy(ing => ing.Category.Name);}
 
 <form id="IngredientsList" >
     @foreach(var group in ingredientGroups){
@@ -16,7 +16,7 @@
             <div class="card-body">
                 @foreach(Ingredient ing in group){
                     
-                    <label  ><input class="form-check-input" type="checkbox" >@ing.name</label>
+                    <label  ><input class="form-check-input" type="checkbox" >@ing.Name</label>
                 }
             </div>
             <div id="bottom">

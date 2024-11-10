@@ -5,7 +5,6 @@ public static class IngredientService{
 
     private static List<Ingredient> _ingredients = new();
 
-    public static IWebHostEnvironment _environment;
     
     
 
@@ -46,7 +45,7 @@ public static class IngredientService{
 
         List<Ingredient> list = new List<Ingredient>();
         foreach(Ingredient ing in _ingredients){
-            if(ing.category == _category){
+            if(ing.Category.Name == _category){
                 list.Add(ing);
             }
         }
