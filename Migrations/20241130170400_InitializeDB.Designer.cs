@@ -10,7 +10,7 @@ using WhatsForDinner.Models;
 namespace WhatsForDinner.Migrations
 {
     [DbContext(typeof(DinnerDbContext))]
-    [Migration("20241130153059_InitializeDB")]
+    [Migration("20241130170400_InitializeDB")]
     partial class InitializeDB
     {
         /// <inheritdoc />
@@ -31,7 +31,7 @@ namespace WhatsForDinner.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("WhatsForDinner.Models.Ingredient", b =>

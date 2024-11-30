@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations;
 namespace WhatsForDinner.Models{
     public class Ingredient{
 
-        [Key]
         public int IngredientId { get; set; }
-        public string Name{ get; set; }
+        public string Name{ get; set; } = String.Empty;
 
-        public long CategoryId { get; set; }
-        public Category Category{ get; set; }
+        
+        public long IngredientCategoryId { get; set; }
 
+        public IngredientCategory IngredientCategory { get; set; }
         
         /*public Ingredient(string _name, string _category){
             Name=_name;

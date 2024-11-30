@@ -4,7 +4,7 @@
 @{ViewData["Title"] = "My Pantry";}
 
 
-@{var ingredientGroups = Model.GroupBy(ing => ing.Category.Name);}
+@{var ingredientGroups = Model.GroupBy(ing => ing.IngredientCategory.Name);}
 
 <form id="IngredientsList" action="" >
     @foreach(var group in ingredientGroups){

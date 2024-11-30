@@ -6,6 +6,6 @@ namespace WhatsForDinner.Models{
 
         public DbSet<Ingredient> Ingredients => Set<Ingredient>(); //creating the Ingredients table
 
-        public DbSet<Category> categories=> Set<Category>(); //creating the Categories table
+        public DbSet<IngredientCategory> Categories => Set<IngredientCategory>(); //creating the Categories table
     }
 }

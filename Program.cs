@@ -10,8 +10,13 @@ builder.Services.AddDbContext<DinnerDbContext>(options =>{
 });
 var app = builder.Build();
 
-app.UseStaticFiles();
 
+app.UseStaticFiles();
 app.MapDefaultControllerRoute();
 
+//SeedData.EnsurePopulated(app);
+
+
 app.Run();
+
+

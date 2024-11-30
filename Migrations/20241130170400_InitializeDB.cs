@@ -11,7 +11,7 @@ namespace WhatsForDinner.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "categories",
+                name: "Categories",
                 columns: table => new
                 {
                     CategoryId = table.Column<long>(type: "INTEGER", nullable: false)
@@ -20,7 +20,7 @@ namespace WhatsForDinner.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_categories", x => x.CategoryId);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,9 +36,9 @@ namespace WhatsForDinner.Migrations
                 {
                     table.PrimaryKey("PK_Ingredients", x => x.IngredientId);
                     table.ForeignKey(
-                        name: "FK_Ingredients_categories_CategoryId",
+                        name: "FK_Ingredients_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "categories",
+                        principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -56,7 +56,7 @@ namespace WhatsForDinner.Migrations
                 name: "Ingredients");
 
             migrationBuilder.DropTable(
-                name: "categories");
+                name: "Categories");
         }
     }
 }
