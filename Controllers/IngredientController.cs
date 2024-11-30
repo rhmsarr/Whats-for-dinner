@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Mvc; 
+using Microsoft.AspNetCore.Mvc;
+using WhatsForDinner.Models;
 
 namespace WhatsForDinner.Controllers{
 
@@ -9,9 +10,9 @@ namespace WhatsForDinner.Controllers{
             return View(IngredientService.ingredients);
         }
 
-        public IActionResult Category(string category){
+        public IActionResult SaveIngredients(List<Ingredient> model){
 
-            return View(IngredientService.GetByCategory(category));
+            return View();
         }
 
     }

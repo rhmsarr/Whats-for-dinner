@@ -12,7 +12,7 @@ public static class IngredientService{
 
     static IngredientService(){
         
-        var filePath = "wwwroot/Data/ingredients.csv";
+        /*var filePath = "wwwroot/Data/ingredients.csv";
         if(System.IO.File.Exists(filePath)){
              using (var reader = new StreamReader(filePath)){
                 while(!reader.EndOfStream){
@@ -28,7 +28,7 @@ public static class IngredientService{
         }
         else{
             Console.WriteLine(filePath);
-        }
+        }*/
        
        
 
@@ -53,7 +53,7 @@ public static class IngredientService{
         return list;
     }
     public static void CreateIngrdient(string _name, string _category){
-        _ingredients.Add(new Ingredient("_name","_category"));
+        //_ingredients.Add(new Ingredient("_name","_category"));
 
     }
 

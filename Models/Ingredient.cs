@@ -6,12 +6,15 @@ namespace WhatsForDinner.Models{
         [Key]
         public int IngredientId { get; set; }
         public string Name{ get; set; }
+
+        public long CategoryId { get; set; }
         public Category Category{ get; set; }
 
-        public Ingredient(string _name, string _category){
+        
+        /*public Ingredient(string _name, string _category){
             Name=_name;
             Category=new Category();
             Category.Name=_category;
-        }
+        }*/
     }
 }
