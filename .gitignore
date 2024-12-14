@@ -1,0 +1,8 @@
+# .NET Core
+# Ignore build results
+/bin/
+/obj/
+
+# VS Code
+.vscode/
+.history/
