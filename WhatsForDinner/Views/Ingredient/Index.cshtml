@@ -37,17 +37,7 @@
             </div>
         </div>
 
-            @*<div class="card-body">
-                @foreach(Ingredient ing in group){
-                    
-                    <label  ><input class="form-check-input" type="checkbox" >@ing.Name</label>
-                }
-            </div>
-            <div id="bottom">
-                <button class="btn">Add an item</button>
-                <button type="submit" class="btn">Save</button>
-            </div>*@
-                
+           
     }
         
         
@@ -59,12 +49,6 @@
 
 </form>
 
-@**{
-    
-    async void  AddIngredients(string name, string category){
-        await JSRuntime.InvokeVoidAsync("AddIngredients", name, category); 
-    }
-}**@
 
 
 
