@@ -1,14 +1,24 @@
 @{
-    Layout = "";
+    Layout = "_Layout";
 }
+
+ <link rel="stylesheet" href="/css/login.css">
 
 <form>
     <div class="login-signup">
-        <label>Email</label>
-        <input type = "email">
-        <label>Password</label>
-        <input type="password">
+        <h3>SIGN IN</h3>
+        <label class="form-label">Email</label>
+        <input type = "email" class="form-control">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control">
+        <span class=" ">
+            <button class="btn btn-primary" id="login">Login</button>
+            <p>Don't have an account yet? <a href="#">Sign up</a></p>
+
+        </span>
+        
     </div>
+    
 
     
 </form>

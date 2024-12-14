@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\WhatsForDinner\\WhatsForDinner.csproj": {}
+    "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\whatsfordinner\\WhatsForDinner.csproj": {}
   },
   "projects": {
-    "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\WhatsForDinner\\WhatsForDinner.csproj": {
+    "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\whatsfordinner\\WhatsForDinner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\WhatsForDinner\\WhatsForDinner.csproj",
+        "projectUniqueName": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\whatsfordinner\\WhatsForDinner.csproj",
         "projectName": "WhatsForDinner",
-        "projectPath": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\WhatsForDinner\\WhatsForDinner.csproj",
+        "projectPath": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\whatsfordinner\\WhatsForDinner.csproj",
         "packagesPath": "C:\\Users\\33780\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\WhatsForDinner\\obj\\",
+        "outputPath": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\whatsfordinner\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

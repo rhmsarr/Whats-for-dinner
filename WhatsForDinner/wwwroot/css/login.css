@@ -1,0 +1,28 @@
+.login-signup{
+    height: 70vh;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    width: 80vw;
+    max-width: 500px;
+    position: relative;
+    }
+
+    /* Better button styling and alignment */
+    button {
+        margin-top: 50px;
+        width: 100%;
+        display: block;
+    }
+
+    p {
+        display: block;
+        margin-top: 20px;
+    }
+
+h3{
+    text-align: center;
+    margin-bottom: 50px;
+}
