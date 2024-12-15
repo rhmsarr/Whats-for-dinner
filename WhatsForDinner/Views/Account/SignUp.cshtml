@@ -1,23 +1,31 @@
 @{
     Layout = "_Layout";
 }
-@model WhatsForDinner.ViewModels.Login
+@model WhatsForDinner.ViewModels.SignUp
 
  <link rel="stylesheet" href="/css/login.css">
 
-<form method="post" asp-action="Index">
+
+
+<form method="post" asp-action="SignUp">
     <div class="login-signup">
-        <h3>Sign in</h3>
+        <h3>Sign up</h3>
+
         <label class="form-label">Email</label>
         <input type = "email" class="form-control" asp-for="Email">
         <span asp-validation-for="Email"></span>
+
         <label class="form-label">Password</label>
         <input type="password" class="form-control" asp-for="Password">
         <span asp-validation-for="Password"></span>
-            <button class="btn btn-primary" id="login">Login</button>
-            <p>Don't have an account yet? <a href="#">Sign up</a></p>
 
-        </span>
+        <label class="form-label"> Confirm password</label>
+        <input type="password" class="form-control" asp-for="ConfirmPassword">
+        <span asp-validation-for="Password"></span>
+
+        <button class="btn btn-primary" id="login">Sign Up</button>
+        <p>Already have an account?<a asp-controller="Account" asp-action="Login">Sign in</a></p>
+
         
     </div>
     
