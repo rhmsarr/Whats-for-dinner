@@ -6,11 +6,11 @@
 
 @{var ingredientGroups = Model.GroupBy(ing => ing.IngredientCategory.Name);}
 
-<form id="IngredientsList" action="" >
+<form id="IngredientsList" asp-action="SaveIngredients" method="post" >
     @foreach(var group in ingredientGroups){
         var modalId = group.Key.Replace(" ", "-");
         <div class ="card"   data-bs-toggle="modal" data-bs-target="#@modalId">
-            <h3 class="card-header">@group.Key</h3>
+            <h3>@group.Key</h3>
 
         </div>
     
@@ -26,7 +26,7 @@
                     <div class="modal-body">
                         @foreach(Ingredient ing in group){
                     
-                            <label><input class="form-check-input" type="checkbox" name="@ing.Name" >@ing.Name</label>
+                            <label><input class="btn" type="checkbox" name="SelectedIngredients"id="@ing.Name" value="@ing.Name" >@ing.Name</label>
                         }
                     </div>
                     <div class="modal-footer">

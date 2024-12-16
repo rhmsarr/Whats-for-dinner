@@ -12,9 +12,7 @@ namespace WhatsForDinner.Models{
                 context.Database.Migrate();
             }
 
-            context.Ingredients.RemoveRange(context.Ingredients); // Removes all ingredients
-            context.Categories.RemoveRange(context.Categories);   // Removes all categories
-            context.SaveChanges();
+            
             //populating the database with data from the ingredients.csv file.
 
             if(!context.Ingredients.Any()){
