@@ -1,23 +1,31 @@
 
 @{ViewData["Title"] = "Generate Recipes";}
+@model GeneratedRecipe
 
 <link rel="stylesheet" href="css/Recipe.css">
+<br><br><br>
 <div class="recipe card">
     
+    
     <div class="card-body">
-        <h3 class="card-title title">Recipe name</h3>
-        <h6 class="card-subtitle title text-muted">Recipe type</h6>
-        <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum necessitatibus veritatis ullam obcaecati quos corporis a eaque voluptatem, consequatur est. Illo architecto necessitatibus possimus perferendis deleniti reiciendis fuga nesciunt.</p>
-        <h5 id="prep-time">Prep time: 10 min </h5><h5 id="cook-time"> Cook Time: 10 min</h5><h5 id="servings"> Servings: 4</h5>
+        <h3 class="card-title title">@Model.RecipeName</h3>
+        <h5 id="prep-time">Prep time: @Model.PrepTime</h5><h5 id="cook-time"> Cook Time: @Model.CookTime</h5><h5 id="servings"> Servings: @Model.Servings</h5>
         <br><br>
         <h4 class="Ingredients">Ingredients:</h4>
         <ul>
-            <li class="Ingredients">Ingredient</li>
-            <li>Ingredient</li>
-            <li>Ingredient</li>
-            <li>Ingredient</li>
+            @foreach(RecipeIngredient ing in Model.Ingredients){
+                <li class="Ingredients">@ing.IngredientName: @ing.quantity</li>
+            }
+            
+            
         </ul>
+        <h4>Steps:</h4>
+        <ol>
+            @foreach(RecipeStep step in Model.Steps)
+            {
+                <li>@step.StepInstruction</li>
+            }
+        </ol>
 
         
         <button class="btn">Make it!</button>

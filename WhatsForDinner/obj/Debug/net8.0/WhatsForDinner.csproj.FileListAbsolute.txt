@@ -156,3 +156,4 @@ C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\bin\Debug\ne
 C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\obj\Debug\net8.0\WhatsForDinner.csproj.AssemblyReference.cache
 C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\obj\Debug\net8.0\WhatsFor.8B3BDCFF.Up2Date
 C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\whatsfordinner\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\33780\Desktop\whatsfordinner\WhatsForDinner\WhatsForDinner\bin\Debug\net8.0\Newtonsoft.Json.dll

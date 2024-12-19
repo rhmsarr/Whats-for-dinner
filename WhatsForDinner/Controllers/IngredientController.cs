@@ -25,15 +25,17 @@ namespace WhatsForDinner.Controllers{
         }
 
         [HttpPost]
-        public IActionResult SaveIngredients(List<string> SelectedIngredients){
+        public IActionResult SaveIngredients(List<string> SelectedIngredients, string CategoryName){
             
             string? userID = _userManager.GetUserId(User);
 
             if(userID == null){
                 return Redirect("Account/Login");
             }
+            long categoryID = _context.Categories.First(ing => ing.Name == CategoryName).IngredientCategoryId;
 
-            List<string> savedIngNames = _context.UsersIngredients.Where(i => i.UserId == userID).Include(i=>i.ingredient).Select(i => i.ingredient.Name).ToList();
+            List<string> savedIngNames = _context.UsersIngredients.Include(i=>i.ingredient).Where(i => i.UserId == userID && i.ingredient.IngredientCategoryId == categoryID)
+                .Select(i => i.ingredient.Name).ToList();
             List<string> ingredientsToAdd = SelectedIngredients.Except(savedIngNames).ToList();
             List<string> ingredientsToRemove = savedIngNames.Except(SelectedIngredients).ToList();
 
