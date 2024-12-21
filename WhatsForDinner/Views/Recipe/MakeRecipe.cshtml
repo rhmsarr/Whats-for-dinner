@@ -1,0 +1,42 @@
+@model Recipe
+
+<br><br>
+ <div class="recipe card">
+        <div class="card-body">
+            <div class="row">
+                <h3 class="card-title title" >@Model.RecipeName</h3>
+                
+                <div class="col-6">
+                    <h4 class="Ingredients">Ingredients:</h4>
+                    <ul>
+                        @foreach(RecipeIngredient ing in Model.Ingredients){
+                            <li class="Ingredients">@ing.IngredientName: @ing.quantity</li>
+                            
+                        }
+                        
+                        
+                    </ul>
+                </div>
+                <div class="col-6">
+                    <h5 id="prep-time">Prep time: @Model.PrepTime</h5>
+                    <h5 id="cook-time"> Cook Time: @Model.CookTime</h5>
+                    <h5 id="servings"> Servings: @Model.Servings</h5>
+                </div>
+            </div>
+        <h4>Steps:</h4>
+        <ol>
+           
+            @foreach(RecipeStep step in Model.RecipeSteps)
+            {
+                <li>@step.StepInstruction</li>
+            }
+        </ol>
+        
+        
+
+        
+        
+      
+    </div>
+    </div><br><br>
+   

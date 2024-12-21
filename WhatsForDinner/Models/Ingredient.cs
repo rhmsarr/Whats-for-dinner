@@ -8,12 +8,8 @@ namespace WhatsForDinner.Models{
 
         
         public long IngredientCategoryId { get; set; }
-        public IngredientCategory IngredientCategory { get; set; }
+        public IngredientCategory IngredientCategory { get; set; } = new IngredientCategory();
         
-        /*public Ingredient(string _name, string _category){
-            Name=_name;
-            Category=new Category();
-            Category.Name=_category;
-        }*/
+        
     }
 }

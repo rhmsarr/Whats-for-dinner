@@ -41,7 +41,7 @@ namespace WhatsForDinner.Controllers{
 
             
                 foreach(string ing in ingredientsToAdd){
-                    IngredientUser ingredient = new IngredientUser{UserId = userID, IngredientId = _context.Ingredients.Where(i => i.Name == ing).FirstOrDefault().IngredientId};
+                    IngredientUser ingredient = new IngredientUser{UserId = userID, IngredientId = _context.Ingredients.Where(i => i.Name == ing).FirstOrDefault().IngredientId, ingredient = null};
                     _context.UsersIngredients.Add(ingredient);
                 }
                 foreach(string ing in ingredientsToRemove){

@@ -59,10 +59,12 @@ namespace WhatsForDinner.Controllers{
                             .First().RecipeId;
             foreach(RecipeStep step in recipe.Steps){
                 step.RecipeId = recipeID;
+                step.recipe = null;
                 _context.RecipeSteps.Add(step);
             }
             foreach(RecipeIngredient ing in recipe.Ingredients){
                 ing.RecipeId = recipeID;
+                ing.recipe = null;
                 _context.RecipesIngredients.Add(ing);
             }
             _context.SaveChanges();
@@ -70,13 +72,25 @@ namespace WhatsForDinner.Controllers{
             return RedirectToAction("SavedRecipes");
         }
 
-
+        public IActionResult SavedRecipes(){
+            string? userID = _userManager.GetUserId(User);
+            if(userID == null){
+                return Redirect("Account/Login");
+            }
+            List<Recipe> recipes = _context.Recipes.Where(r => r.UserId == userID).Include(r => r.Ingredients).ToList();
+            return View(recipes);
+        }
 
             
         
 
-        public IActionResult RecipesList(){
-            return View();
+        public IActionResult MaKeRecipe(int id){
+            string? userID = _userManager.GetUserId(User);
+            Recipe recipe = _context.Recipes.Where(r => r.RecipeId == id).Include(r => r.Ingredients).Include(r => r.RecipeSteps).First();
+            if(recipe == null || recipe.UserId != userID){
+                return Redirect("SavedRecipes");
+            }
+            return View(recipe);
         }
         
     }

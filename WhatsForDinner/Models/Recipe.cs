@@ -11,6 +11,9 @@ namespace WhatsForDinner.Models{
         public string PrepTime { get; set; } = string.Empty;
         public string Servings { get; set; } = string.Empty;
         
+        public List<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
+        public List<RecipeStep> RecipeSteps { get; set;} = new List<RecipeStep>();
+
     }
     
 }
