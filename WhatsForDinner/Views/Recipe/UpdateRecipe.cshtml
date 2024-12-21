@@ -1,0 +1,61 @@
+@model Recipe
+
+<form asp-action="UpdateRecipe" method="post">
+    
+    <input type="hidden" asp-for="@Model.RecipeId">
+    <input type="hidden" asp-for="@Model.UserId">
+    <br>
+    <div class="row">
+        <div class="col-3">
+            <h3 class="form-label">Name</h3>
+
+            <input class="form-control" type="text" asp-for="@Model.RecipeName">
+        </div>
+        <div class="col-3">
+             <h3 class="form-label">Cook Time</h3>
+            <input class="form-control"asp-for="@Model.CookTime" type="text">
+        </div>
+        <div class="col-3">
+            <h3 class="form-label">Prep Time</h3>
+            <input class="form-control" asp-for="@Model.PrepTime" type="text">
+        </div>
+        <div class="col-3">
+            <h3 class="form-label">Servings</h3>
+            <input class="form-control" asp-for="@Model.Servings" type="text">
+        </div>
+    </div>
+   
+    <br><br>
+    <h3 class="form-label">Ingredients</h3>
+    
+    @foreach(RecipeIngredient ingredient in Model.Ingredients){
+        <div class="row">
+            <div class="col-4">
+                <input type="text" class="form-control" asp-for="@ingredient.IngredientName">
+            </div>
+            <div class="col-2"></div>
+
+            <div class="col-6">
+                <input type="text" class="form-control" asp-for="@ingredient.quantity">
+                
+            </div>
+        </div>
+        <br>
+
+    }<br><br><h3>Instructions</h3>
+    <br>
+    @foreach(RecipeStep step in Model.RecipeSteps){
+        <div class="row">
+            <div class="col-1">
+                <h6 style="text-align: right;">@step.StepNumber</h6>
+            </div><div class="col-11">
+                <textarea asp-for="@step.StepInstruction" class="form-control" rows="3"></textarea>
+                
+            </div>
+        </div>
+        <br>
+
+    }
+    <button class="btn btn-primary btn-lg" style="float: inline-end;" type="submit"> &nbsp; Save &nbsp;</button>
+    <br><br><br>
+</form>
