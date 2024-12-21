@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,24 +30,50 @@ namespace WhatsForDinner.Controllers{
             List<string> ingredients = _context.UsersIngredients.Where(i => i.UserId == userID)
                 .Include(i => i.ingredient).Select(i => i.ingredient.Name).ToList();
 
-            GeneratedRecipe recipe = await _cohereService.GenerateRecipeWithIngredients(ingredients);
+            List<GeneratedRecipe> recipe = await _cohereService.GenerateRecipeWithIngredients(ingredients);
 
-            /*foreach(RecipeIngredient ing in recipe.Ingredients){
-                var ingredient = _context.Ingredients.First(i => i.IngredientId == ing.IngredientId);
-                ing.ing = new Ingredient(){
-                    Name = ingredient.Name
-                };
-
-            }*/
-
-            //var ingredientIds = recipe.Ingredients.Select(i => i.IngredientId).ToList();
-            //var ingredients = _context.Ingredients.Where(i => ingredientIds.Contains(i.IngredientId)).ToList();
-
+            
             
             
 
             return View(recipe);
         }
+        [HttpPost]
+        public IActionResult SaveRecipe(GeneratedRecipe recipe){
+            string? userID = _userManager.GetUserId(User);
+            if(userID == null){
+                return Redirect("Account/Login");
+            }
+            _context.Recipes.Add(
+                new Recipe {
+                    RecipeName = recipe.RecipeName,
+                    CookTime = recipe.CookTime,
+                    PrepTime = recipe.PrepTime,
+                    Servings = recipe.Servings,
+                    UserId = userID
+
+                });
+            _context.SaveChanges();    
+
+            int recipeID = _context.Recipes.Where(r => r.UserId == userID && r.RecipeName == recipe.RecipeName)
+                            .First().RecipeId;
+            foreach(RecipeStep step in recipe.Steps){
+                step.RecipeId = recipeID;
+                _context.RecipeSteps.Add(step);
+            }
+            foreach(RecipeIngredient ing in recipe.Ingredients){
+                ing.RecipeId = recipeID;
+                _context.RecipesIngredients.Add(ing);
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("SavedRecipes");
+        }
+
+
+
+            
+        
 
         public IActionResult RecipesList(){
             return View();

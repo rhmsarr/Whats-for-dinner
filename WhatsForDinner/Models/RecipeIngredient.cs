@@ -6,7 +6,7 @@ namespace WhatsForDinner.Models{
         public int RecipeId { get; set;}
         public string quantity { get; set;} = string.Empty;
 
-        public Ingredient ing {get; set;}
-        //public Recipe recipe
+        //public Ingredient ing {get; set;}
+        public Recipe recipe { get; set;}
     }
 }

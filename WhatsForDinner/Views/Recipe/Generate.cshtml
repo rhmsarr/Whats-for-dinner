@@ -1,35 +1,61 @@
 
 @{ViewData["Title"] = "Generate Recipes";}
-@model GeneratedRecipe
+@model List<GeneratedRecipe>
 
 <link rel="stylesheet" href="css/Recipe.css">
-<br><br><br>
-<div class="recipe card">
+<br><br>
+
     
-    
-    <div class="card-body">
-        <h3 class="card-title title">@Model.RecipeName</h3>
-        <h5 id="prep-time">Prep time: @Model.PrepTime</h5><h5 id="cook-time"> Cook Time: @Model.CookTime</h5><h5 id="servings"> Servings: @Model.Servings</h5>
-        <br><br>
-        <h4 class="Ingredients">Ingredients:</h4>
-        <ul>
-            @foreach(RecipeIngredient ing in Model.Ingredients){
-                <li class="Ingredients">@ing.IngredientName: @ing.quantity</li>
-            }
-            
-            
-        </ul>
+    @foreach(GeneratedRecipe recipe in Model){
+
+    <form asp-action="SaveRecipe" method="post">
+    <div class="recipe card">
+        <div class="card-body">
+            <div class="row">
+                <h3 class="card-title title" >@recipe.RecipeName</h3>
+                <input type="hidden" name="RecipeName" value="@recipe.RecipeName">
+                
+                <div class="col-6">
+                    <h4 class="Ingredients">Ingredients:</h4>
+                    <ul>@{int i = 0;
+                        @foreach(RecipeIngredient ing in recipe.Ingredients){
+                            <li class="Ingredients">@ing.IngredientName: @ing.quantity</li>
+                            <input type="hidden" name="Ingredients[@i].IngredientName" value="@ing.IngredientName">
+                            <input type="hidden" name="Ingredients[@i].quatity" value="@ing.quantity">
+                            i++;
+                        }}
+                        
+                        
+                    </ul>
+                </div>
+                <div class="col-6">
+                    <h5 id="prep-time">Prep time: @recipe.PrepTime</h5>
+                    <input type="hidden" name="PrepTime" value="@recipe.PrepTime">
+                    <h5 id="cook-time"> Cook Time: @recipe.CookTime</h5>
+                    <input type="hidden" name="CookTime" value="@recipe.CookTime">
+                    <h5 id="servings"> Servings: @recipe.Servings</h5>
+                    <input type="hidden" name="Servings" value="@recipe.Servings">
+                </div>
+            </div>
         <h4>Steps:</h4>
         <ol>
-            @foreach(RecipeStep step in Model.Steps)
+            @{int j = 0;
+            @foreach(RecipeStep step in recipe.Steps)
             {
                 <li>@step.StepInstruction</li>
-            }
+                <input type="hidden" name="Steps[@j].StepInstruction"  value="@step.StepInstruction">
+                <input type="hidden" name="Steps[@j].StepNumber" value="@step.StepNumber">
+                j++;
+            }}
         </ol>
+        
+        
 
         
+        
         <button class="btn">Make it!</button>
-        <button class="btn">Save for later</button> 
+        <button type="submit"class="btn">Save for later</button> 
     </div>
-    
-</div>
+    </div><br><br>
+    </form>
+    }

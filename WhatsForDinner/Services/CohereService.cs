@@ -1,3 +1,4 @@
+
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Options;
@@ -16,15 +17,21 @@ namespace WhatsForDinner.Services{
             _apikey = cohereSettings.Value.ApiKey;
             _context = context;
         }
-        public async Task<GeneratedRecipe> GenerateRecipeWithIngredients(List<string> pantryIngredients){
+        public async Task<List<GeneratedRecipe>> GenerateRecipeWithIngredients(List<string> pantryIngredients){
             //prompt for the Cohere API to process and then generate a recipe in the Json format.
-            string query = $"Generate me a recipe that contains {string.Join(",", pantryIngredients)}. Try your best to generate a recipe only with the precised ingredients, but if you can't you can add a couple. Give me your answer in a json format, with the \"RecipeName\", the \"CookTime\", the \"PrepTime\", the \"Servings\", the \"Ingredients\" and for each of it the \"IngredientName\" and the \"Quantity\", and then the \"Steps\" and for each of it the \"StepNumber\" and the \"StepInstruction\". Ensure the json file doesn't contain any errors, and can be read properly.";
+            string query = $@"Generate exactly two recipes that use the following ingredients: {string.Join(",", pantryIngredients)}. 
+                            The JSON format must strictly follow these rules: 
+                            - Only include the fields: ""RecipeName"", ""CookTime"", ""PrepTime"", ""Servings"", ""Ingredients"", and ""Steps"". 
+                            - The ""Ingredients"" array should only contain objects with ""IngredientName"" and ""Quantity"".
+                            - The ""Steps"" array should only contain objects with ""StepNumber"" and ""StepInstruction"".
+                            - Do not include any other fields, commas, or extra characters.
+                            - Ensure the JSON is correctly formatted and valid without extra fields or mistakes.";
             
             //preparing the request
             var requestBody = new{
                 model = "command-r-plus", //model that will be used
                 prompt = query, //prompt to be sent to the model
-                max_tokens = 2000, //maximum length of the model's response and the prompt combined 
+                max_tokens = 2048, //maximum length of the model's response and the prompt combined 
                 temperature = 0.7 //fine tuning the model's temperature
 
             };
@@ -52,12 +59,12 @@ namespace WhatsForDinner.Services{
             string recipeJson = result.text.ToString();
             recipeJson = CleanJsonString(recipeJson);
             recipeJson = HandleEscapeCharacters(recipeJson);
-            recipeJson = RemoveTrailingCommas(recipeJson);
+            //recipeJson = RemoveTrailingCommas(recipeJson);
 
 
 
             // Now, deserialize the recipe JSON string into the GeneratedRecipe object
-            GeneratedRecipe recipe = JsonConvert.DeserializeObject<GeneratedRecipe>(recipeJson);
+            List<GeneratedRecipe> recipe = JsonConvert.DeserializeObject<List<GeneratedRecipe>>(recipeJson);
 
             return recipe;
 
