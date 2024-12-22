@@ -1,4 +1,6 @@
-using System.Reflection.Metadata.Ecma335;
+/*
+ *      Rahma Toulaye Sarr - B231202551 - SWE203 Final Project
+ */
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -115,6 +117,7 @@ namespace WhatsForDinner.Controllers{
         }
 
         [HttpPost]
+        //method updating the recipes in the database
         public async Task<IActionResult> UpdateRecipe(Recipe recipe){
             //updating the recipe steps
             foreach(RecipeStep step in recipe.RecipeSteps){
@@ -134,7 +137,7 @@ namespace WhatsForDinner.Controllers{
             await _context.SaveChangesAsync();
             return RedirectToAction("SavedRecipes");
         }
-
+        //method deleting the recipes from the database
         public async Task<IActionResult> DeleteRecipe(int id){
             //finding the recipe from it's ID
             Recipe recipe = _context.Recipes.Where(r => r.RecipeId == id)

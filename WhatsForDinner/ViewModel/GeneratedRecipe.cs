@@ -1,3 +1,6 @@
+/*
+ *      Rahma Toulaye Sarr - B231202551 - SWE203 Final Project
+ */
 using WhatsForDinner.Models;
 namespace WhatsForDinner.ViewModels{
     public class GeneratedRecipe{

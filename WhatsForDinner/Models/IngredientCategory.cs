@@ -1,5 +1,6 @@
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
+/*
+ *      Rahma Toulaye Sarr - B231202551 - SWE203 Final Project
+ */
 namespace WhatsForDinner.Models{
 
     public class IngredientCategory{

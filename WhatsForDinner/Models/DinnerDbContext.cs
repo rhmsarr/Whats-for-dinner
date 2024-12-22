@@ -1,3 +1,6 @@
+/*
+ *      Rahma Toulaye Sarr - B231202551 - SWE203 Final Project
+ */
 using Microsoft.EntityFrameworkCore;
 
 namespace WhatsForDinner.Models{
