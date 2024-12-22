@@ -50,8 +50,8 @@ body{
                         @foreach(Ingredient ing in group){
                             bool isSelected = ViewBag.SelectedIngredients != null && ViewBag.SelectedIngredients.Contains(ing.Name);
 
-                             <label>
-                                <input class="btn" type="checkbox" name="SelectedIngredients" id="@ing.Name" value="@ing.Name" @(isSelected ? "checked" : "") />
+                             <label >
+                                <input type="checkbox" name="SelectedIngredients" id="@ing.Name" value="@ing.Name" @(isSelected ? "checked" : "") />
                                 @ing.Name
                             </label>
                         }

@@ -158,6 +158,11 @@ namespace WhatsForDinner.Controllers{
 
         }
 
+        public IActionResult Search(string search){
+            List<Recipe> recipes= _context.Recipes.Include(r => r.Ingredients).Where(r => r.RecipeName.ToLower().Contains(search)).ToList();
+            return View("SavedRecipes", recipes);
+        }
+
         
     }
 }

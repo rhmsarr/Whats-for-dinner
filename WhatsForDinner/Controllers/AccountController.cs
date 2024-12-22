@@ -54,6 +54,7 @@ namespace WhatsForDinner.Controllers{
         [HttpPost]
         //method signing up the user
         public async Task<IActionResult> SignUp(SignUp credentials){
+
             //if the user entered valid information
             if(ModelState.IsValid){
                 //checking if an account has already been created with this email

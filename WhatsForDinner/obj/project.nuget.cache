@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S/Pr63wxsv4=",
+  "dgSpecHash": "6x1njyrWI9g=",
   "success": true,
-  "projectFilePath": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\whatsfordinner\\WhatsForDinner.csproj",
+  "projectFilePath": "C:\\Users\\33780\\Desktop\\whatsfordinner\\WhatsForDinner\\WhatsForDinner\\WhatsForDinner.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\33780\\.nuget\\packages\\bootstrap\\5.3.3\\bootstrap.5.3.3.nupkg.sha512",
     "C:\\Users\\33780\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
