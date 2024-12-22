@@ -25,7 +25,7 @@ namespace WhatsForDinner.Controllers{
             
             string? userID = _userManager.GetUserId(User);
             if(userID == null){
-                return Redirect("Account/Login");
+                return RedirectToAction("Login", "Account",new{ returnUrl = "/Recipe/Generate"});
             }
             //saving the user's ingredients' names
             List<string> ingredients = _context.UsersIngredients.Where(i => i.UserId == userID)
@@ -45,7 +45,7 @@ namespace WhatsForDinner.Controllers{
         public IActionResult SaveRecipe(GeneratedRecipe recipe){
             string? userID = _userManager.GetUserId(User);
             if(userID == null){
-                return Redirect("Account/Login");
+                return RedirectToAction("Login", "Account",new{ returnUrl = "/Recipe/SaveRecipe"});
             }
             //saving the main recipe data to the database
             _context.Recipes.Add(
@@ -83,7 +83,7 @@ namespace WhatsForDinner.Controllers{
         public IActionResult SavedRecipes(){
             string? userID = _userManager.GetUserId(User);
             if(userID == null){
-                return Redirect("/Account/Login");
+                return RedirectToAction("Login", "Account", new{ returnUrl = "/Recipe/SavedRecipes"});
             }
             List<Recipe> recipes = _context.Recipes.Where(r => r.UserId == userID).Include(r => r.Ingredients).ToList();
             return View(recipes);
@@ -118,10 +118,12 @@ namespace WhatsForDinner.Controllers{
         public async Task<IActionResult> UpdateRecipe(Recipe recipe){
             //updating the recipe steps
             foreach(RecipeStep step in recipe.RecipeSteps){
+                step.recipe = null;
                 _context.RecipeSteps.Update(step);
             }
             //updating the recipe ingredients 
             foreach(RecipeIngredient ing in recipe.Ingredients){
+                ing.recipe = null;
                 _context.RecipesIngredients.Update(ing);
             }
             //avoiding the creating of columns for ingredients and steps

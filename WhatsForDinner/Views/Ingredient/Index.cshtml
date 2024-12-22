@@ -2,6 +2,10 @@
 <link rel="stylesheet" href="/css/IngredientStyle.css">
 
 @{ViewData["Title"] = "My Pantry";}
+<style>
+    color: white;
+    background-color: rgba(0,0,0,0.7) !important;
+</style>
 
 
 @{var ingredientGroups = Model.GroupBy(ing => ing.IngredientCategory.Name);}
@@ -27,8 +31,12 @@
                     
                     <div class="modal-body">
                         @foreach(Ingredient ing in group){
-                    
-                            <label><input class="btn" type="checkbox" name="SelectedIngredients"id="@ing.Name" value="@ing.Name" >@ing.Name</label>
+                            bool isSelected = ViewBag.SelectedIngredients != null && ViewBag.SelectedIngredients.Contains(ing.Name);
+
+                             <label>
+                                <input class="btn" type="checkbox" name="SelectedIngredients" id="@ing.Name" value="@ing.Name" @(isSelected ? "checked" : "") />
+                                @ing.Name
+                            </label>
                         }
                         <input type="hidden" name="CategoryName" value="@group.Key" />
                     </div>

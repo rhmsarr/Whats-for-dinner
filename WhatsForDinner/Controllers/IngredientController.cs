@@ -19,8 +19,23 @@ namespace WhatsForDinner.Controllers{
 
         [Route("MyAccount/MyPantry")]
         public IActionResult Index(){
+            //retrieving the ingredients from the database
             var ingredients = _context.Ingredients.Include(i => i.IngredientCategory).AsQueryable();
             List<Ingredient> ingredientsList = ingredients.OrderBy(i => i.IngredientCategory.Name).ToList();
+            string? userID = _userManager.GetUserId(User);
+
+            //if the user is logged in, retrieving the ingredients they have already selected
+            List<string> selectedIngredients = new List<string>();
+            if (userID != null)
+            {
+                selectedIngredients = _context.UsersIngredients
+                    .Where(i => i.UserId == userID)
+                    .Select(i => i.ingredient.Name)
+                    .ToList();
+            }
+
+            //passing selected ingredients to the view
+            ViewBag.SelectedIngredients = selectedIngredients;
             return View(ingredientsList);
         }
 
@@ -30,11 +45,11 @@ namespace WhatsForDinner.Controllers{
             string? userID = _userManager.GetUserId(User);
 
             if(userID == null){
-                return Redirect("Account/Login");
+                return RedirectToAction("Login", "Account",new{returnUrl = "/Ingredient/SaveIngredients"});
             }
-            long categoryID = _context.Categories.First(ing => ing.Name == CategoryName).IngredientCategoryId;
+            //long categoryID = _context.Categories.First(ing => ing.Name == CategoryName).IngredientCategoryId;
 
-            List<string> savedIngNames = _context.UsersIngredients.Include(i=>i.ingredient).Where(i => i.UserId == userID && i.ingredient.IngredientCategoryId == categoryID)
+            List<string> savedIngNames = _context.UsersIngredients.Include(i=>i.ingredient).Where(i => i.UserId == userID)
                 .Select(i => i.ingredient.Name).ToList();
             List<string> ingredientsToAdd = SelectedIngredients.Except(savedIngNames).ToList();
             List<string> ingredientsToRemove = savedIngNames.Except(SelectedIngredients).ToList();

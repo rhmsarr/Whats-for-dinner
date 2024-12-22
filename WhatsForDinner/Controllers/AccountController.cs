@@ -16,17 +16,20 @@ namespace WhatsForDinner.Controllers{
         }
 
         [HttpGet]
-        public IActionResult Login(){
-            return View();
+        public IActionResult Login(string returnUrl = "/"){
+            return View(new Login { returnUrl = returnUrl });
         }
         [HttpPost]
         public async Task<IActionResult> Login(Login credentials){
+            credentials.returnUrl = credentials.returnUrl ?? "/";
             if (ModelState.IsValid){
                 var user = await _userManager.FindByEmailAsync(credentials.Email);
                 if (user != null){
                     var loginResult = await _signInManager.PasswordSignInAsync(user, credentials.Password, false, false);
                     if(loginResult.Succeeded){
-                        return Redirect("/");
+                        
+
+                        return Redirect(credentials.returnUrl);
                     } 
                 }
                 
