@@ -1,13 +1,45 @@
 @model List<Recipe>
+@{ViewData["Title"] = "Recipes";}
+    <style>
+    body{
+    background-image: url("/images/honey.jpg") !important;
+
+}
+
+
+
+
+</style>
+
+<br><br>
+<form method="get" asp-action="Search">
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-7">
+            <input type="text" name="search" class="form-control form-control-lg" placeholder="Search for recipes">
+        </div>
+        <div class="col-1">
+            <button class="btn btn-lg" type="submit"><i class="bi bi-search" style="color:antiquewhite"></i></button>
+        </div>
+        <div class="col-2">
+            
+        </div>          
+
+    </div>
+    
+</form>
 <br><br><br>
 @foreach(Recipe recipe in Model){
     <div class="recipe card">
         <div class="card-body">
             <div class="row">
-                <h3 class="card-title title" >@recipe.RecipeName</h3>
-                
-                <div class="col-6">
-                    <h4 class="Ingredients">Ingredients:</h4>
+                <h2 >@recipe.RecipeName</h2>
+                <br><br><br>
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <h4 class="Ingredients" >Ingredients:</h4>
                     <ul>
                         @foreach(RecipeIngredient ing in recipe.Ingredients){
                             <li class="Ingredients">@ing.IngredientName: @ing.quantity</li>
@@ -16,21 +48,27 @@
                         
                     </ul>
                 </div>
-                <div class="col-6">
-                    <h5 id="prep-time">Prep time: @recipe.PrepTime</h5>
+                <div class="col-2"></div>
+
+                <div class="col-4">
+                    <br>
+                    <div><h5 id="prep-time" style="display: inline;">Prep time: </h5>@recipe.PrepTime</div>
                     <input type="hidden" name="PrepTime" value="@recipe.PrepTime">
-                    <h5 id="cook-time"> Cook Time: @recipe.CookTime</h5>
+                    <div><h5 id="cook-time" style="display: inline;">Cook time: </h5>@recipe.CookTime</div>
                     <input type="hidden" name="CookTime" value="@recipe.CookTime">
-                    <h5 id="servings"> Servings: @recipe.Servings</h5>
+                    <div><h5 id="servings" style="display: inline;">Servings: </h5>@recipe.Servings</div>
+
                     <input type="hidden" name="Servings" value="@recipe.Servings">
                 </div>
+                <div class="col-2"></div>
+
             </div>
            
-                <a class="btn btn-primary" asp-controller="Recipe" asp-action="MakeRecipe"asp-route-id="@recipe.RecipeId">
+                <a class="btn " asp-controller="Recipe" asp-action="MakeRecipe"asp-route-id="@recipe.RecipeId">
                     Make it!
                 </a>
-                <a class="btn btn-primary" style="float: inline-end" asp-controller="Recipe" asp-action="UpdateRecipe" asp-route-id="@recipe.RecipeId">Update</a>
-                <a class="btn btn-primary" style="float: inline-end" asp-asp-controller="Recipe" asp-action="DeleteRecipe" asp-route-id="@recipe.RecipeId">Delete</a>
+                <a class="btn " style="float: inline-end; margin-left: 10px;" asp-controller="Recipe" asp-action="UpdateRecipe" asp-route-id="@recipe.RecipeId">Update</a>
+                <a class="btn " style="float: inline-end" asp-asp-controller="Recipe" asp-action="DeleteRecipe" asp-route-id="@recipe.RecipeId">Delete</a>
 
         </div>
     </div>

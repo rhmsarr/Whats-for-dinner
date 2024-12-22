@@ -3,30 +3,47 @@
 
 @{ViewData["Title"] = "My Pantry";}
 <style>
-    color: white;
-    background-color: rgba(0,0,0,0.7) !important;
+body{
+    background-image: url("/images/cookies.jpg") !important;
+ 
+}
+
+.modal-content{
+    background-color: rgba(48,46,46) !important; 
+    border-radius: 10px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    position: relative;
+    z-index: 1;  
+    color: antiquewhite;
+
+}
+
+
+
+
 </style>
 
 
 @{var ingredientGroups = Model.GroupBy(ing => ing.IngredientCategory.Name);}
-
+<br>
 <form id="IngredientsList" asp-action="SaveIngredients" method="post" >
     
-
+    
     @foreach(var group in ingredientGroups){
         var modalId = group.Key.Replace(" ", "-");
         <div class ="card"   data-bs-toggle="modal" data-bs-target="#@modalId">
-            <h3>@group.Key</h3>
-
+            <br><br>
+            <h3 style="text-align: center;">@group.Key</h3>
+            <br><br>
         </div>
     
         <div class="modal fade" id="@modalId" tabindex="-1" aria-labelledby="@modalId"aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg" >
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4>@group.Key</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        </button>
+                    <div>
+                        <br>
+                        <h4 style="text-align: center;">@group.Key</h4>
+                        <br>
                     </div>
                     
                     <div class="modal-body">
@@ -40,10 +57,9 @@
                         }
                         <input type="hidden" name="CategoryName" value="@group.Key" />
                     </div>
-                    <div class="modal-footer">
-                        <button class="btn">Add an item</button>
-                        <button type="submit" class="btn">Save</button>
-                    </div>
+                    <span>
+                        <button type="submit" style="float:inline-end ; margin: 10px;"class="btn">Save</button>
+                    </span>
                 </div>
             </div>
         </div>

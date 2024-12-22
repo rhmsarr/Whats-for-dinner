@@ -1,5 +1,5 @@
 .login-signup{
-    height: 70vh;
+    min-height: 70vh;
     margin: auto;
     margin-top: 50px;
     border-radius: 20px;
@@ -25,4 +25,19 @@
 h3{
     text-align: center;
     margin-bottom: 50px;
+}
+body{
+    background-image: url("/images/honeyhome.jpg") !important;
+    background-size: cover;
+    backdrop-filter: blur(3px);
+    z-index: 0;
+}
+.card{
+    background-color: rgba(0,0,0,0.5); /* Light background with some transparency */
+    border-radius: 10px;  /* Optional: for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Optional: adds shadow for better visibility */
+    position: relative;
+    z-index: 1;  /* Ensure card is on top of other content */
+    color: rgb(209, 202, 193);
+
 }

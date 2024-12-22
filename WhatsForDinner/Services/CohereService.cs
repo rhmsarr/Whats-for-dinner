@@ -75,19 +75,23 @@ namespace WhatsForDinner.Services{
             response.EnsureSuccessStatusCode();
 
             var responseBody = await response.Content.ReadAsStringAsync();
-            dynamic result = JsonConvert.DeserializeObject(responseBody);
+            try{
+                dynamic result = JsonConvert.DeserializeObject(responseBody);
+                // retrieving the actual recipe inside the text field
+                string recipeJson = result.text.ToString();
+                recipeJson = CleanJsonString(recipeJson);
+                recipeJson = HandleEscapeCharacters(recipeJson);
 
-            // retrieving the actual recipe inside the text field
-            string recipeJson = result.text.ToString();
-            recipeJson = CleanJsonString(recipeJson);
-            recipeJson = HandleEscapeCharacters(recipeJson);
 
 
+                //deserializing the recipe JSON string into the GeneratedRecipe object
+                List<GeneratedRecipe> recipe = JsonConvert.DeserializeObject<List<GeneratedRecipe>>(recipeJson);
 
-            //deserializing the recipe JSON string into the GeneratedRecipe object
-            List<GeneratedRecipe> recipe = JsonConvert.DeserializeObject<List<GeneratedRecipe>>(recipeJson);
-
-            return recipe;
+                return recipe;
+            }catch(Exception){
+                return new List<GeneratedRecipe>();
+            }
+            
 
         }
         

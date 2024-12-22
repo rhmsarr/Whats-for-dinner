@@ -30,5 +30,28 @@
         .navbar-custom .navbar-toggler{
             border: none;
         }
-
+        .btn{
+            color: antiquewhite;
+            background-color: rgba(0,0,0,0.7) !important;
+        }
+        .btn:hover{
+            border: 1px solid rgba(0, 0, 0,0.7) !important;
+            color: antiquewhite !important;
+            background-color: rgba(0,0,0,0.9) !important;
+        }
+        body{
+            
+            background-size: cover;
+            backdrop-filter: blur(3px);
+            z-index: 0;
+        }
+        .card{
+            background-color: rgba(0,0,0,0.5); 
+            border-radius: 10px;  
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+            position: relative;
+            z-index: 1;  
+            color: rgb(209, 202, 193);
+        
+        }
         

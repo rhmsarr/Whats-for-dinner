@@ -1,5 +1,6 @@
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "Sign In";
 }
 @model WhatsForDinner.ViewModels.Login
 
@@ -17,7 +18,7 @@
         <input type="password" class="form-control" asp-for="Password">
         <span asp-validation-for="Password"></span>
 
-        <button class="btn btn-primary" id="login">Sign in</button>
+        <button class="btn" id="login">Sign in</button>
         <p>Don't have an account yet? <a asp-controller="Account" asp-action="SignUp">Sign up</a></p>
         <input type="hidden" asp-for="returnUrl" />
 
@@ -27,3 +28,4 @@
 
     
 </form>
+<br><br>

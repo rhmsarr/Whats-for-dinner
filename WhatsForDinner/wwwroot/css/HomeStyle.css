@@ -1,5 +1,5 @@
 body{
-    background-image: url("/images/spoons1.jpg") !important;
+    background-image: url("/images/honeyhome.jpg") !important;
     background-size: cover;
     backdrop-filter: blur(3px);
 }
@@ -27,14 +27,14 @@ h1{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: antiquewhite;
     background-color: rgba(0,0,0,0.7) !important;
     width: 50vw;
     height: 10vh;
 }
 .generate button:hover{
     border: 1px solid rgba(0, 0, 0,0.7) !important;
-    color: white !important;
+    color: antiquewhite !important;
     background-color: rgba(0,0,0,0.9) !important;
     
 }

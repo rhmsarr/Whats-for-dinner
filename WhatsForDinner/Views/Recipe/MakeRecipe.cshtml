@@ -1,5 +1,11 @@
 @model Recipe
+@{ViewData["Title"] = $"{@Model.RecipeName}";}
+<style>
+    body{
+    background-image: url("/images/spoons1.jpg") !important;
+   }
 
+</style>
 <br><br>
  <div class="recipe card">
         <div class="card-body">
