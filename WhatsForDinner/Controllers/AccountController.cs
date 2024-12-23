@@ -61,7 +61,7 @@ namespace WhatsForDinner.Controllers{
                 var existingUser = await _userManager.FindByEmailAsync(credentials.Email);
                 if(existingUser != null){
                     
-                     ModelState.AddModelError(string.Empty, "An account with this email already exists.");
+                    ModelState.AddModelError(string.Empty, "An account with this email already exists.");
                     return View(credentials);
                 }
                 //creating the user
@@ -73,6 +73,10 @@ namespace WhatsForDinner.Controllers{
                 //redirecting the user to login
                 if(result.Succeeded){
                     return RedirectToAction("Login");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
             return View(credentials);

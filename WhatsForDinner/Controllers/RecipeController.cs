@@ -157,9 +157,9 @@ namespace WhatsForDinner.Controllers{
             return RedirectToAction("SavedRecipes");
 
         }
-
+        //Method returning recipes depending on the user's search.
         public IActionResult Search(string search){
-            List<Recipe> recipes= _context.Recipes.Include(r => r.Ingredients).Where(r => r.RecipeName.ToLower().Contains(search)).ToList();
+            List<Recipe> recipes= _context.Recipes.Include(r => r.Ingredients).Where(r => r.RecipeName.ToLower().Contains(search.ToLower())).ToList();
             return View("SavedRecipes", recipes);
         }
 

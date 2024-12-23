@@ -11,12 +11,22 @@
 <form method="post" asp-action="Login">
     <div class="login-signup">
         <h3>Sign in</h3>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
         <label class="form-label">Email</label>
         <input type = "email" class="form-control" asp-for="Email">
-        <span asp-validation-for="Email"></span>
+
         <label class="form-label">Password</label>
         <input type="password" class="form-control" asp-for="Password">
-        <span asp-validation-for="Password"></span>
 
         <button class="btn" id="login">Sign in</button>
         <p>Don't have an account yet? <a asp-controller="Account" asp-action="SignUp">Sign up</a></p>
