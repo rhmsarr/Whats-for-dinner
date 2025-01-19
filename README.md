@@ -30,7 +30,7 @@ Follow these instructions to get a local copy of the project up and running.
 2. **Set up the API Key**:
 
    - Open the `appsettings.json` file in the root directory.
-   - Add your Cohere API key under the `CohereApiKey` field:
+   - Add your Cohere API key under the `ApiKey` field:
      ```json
      "CohereSettings": {
          "ApiKey": "Your_API_Key"  }
