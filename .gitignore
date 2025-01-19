@@ -1,7 +1,9 @@
 # .NET Core
 # Ignore build results
-/bin/
-/obj/
+bin/
+obj/
+
+appsettings.json
 
 # VS Code
 .vscode/
