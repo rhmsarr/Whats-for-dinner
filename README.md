@@ -64,7 +64,7 @@ Follow these instructions to get a local copy of the project up and running.
    dotnet run
    ```
 
-   The application will be available at `https://localhost:5001`.
+   The application will be available at `http://localhost:44154`.
 
 ### Usage
 
